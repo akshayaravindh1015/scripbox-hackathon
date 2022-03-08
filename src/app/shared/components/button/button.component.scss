@@ -1,0 +1,34 @@
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 27px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-width: 1px;
+  border-style: solid;
+  outline: none;
+  &:focus {
+    border-width: 2px;
+  }
+  &.primary {
+    background: var(--primary-default);
+    color: var(--foreground-default);
+    border-color: var(--primary-dark);
+  }
+  &.secondary {
+    background: var(--background-default);
+    color: var(--foreground-secondary);
+    border-color: var(--primary-dark);
+  }
+  &:disabled {
+    background-color: #e7e7e7;
+    color: black;
+    border-color: #e7e7e7;
+  }
+}
