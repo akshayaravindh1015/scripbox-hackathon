@@ -6,6 +6,7 @@
       [label]="userNameState.label"
       [props]="userNameState.props"
       [validations]="userNameState.validations"
+      (onLoad)="captureEmpIdController($event)"
     ></cust-input>
     <div class="actions">
       <cust-button (click)="loginHanlder()">Login</cust-button>
