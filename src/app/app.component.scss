@@ -1,7 +1,11 @@
 @import "variables.scss";
 @import "mixins.scss";
 
-a {
-  color: $accent;
-  @include standard-border;
+#whole-app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  main {
+    flex-grow: 1;
+  }
 }
