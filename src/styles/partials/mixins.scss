@@ -1,0 +1,10 @@
+@mixin mat-background() {
+    background-color: rgba(87, 87, 87, 0.75);
+    color: white;
+}
+@mixin standard-border($radius: 4px, $width: 1px) {
+    border-width: $width;
+    border-color: lightgray;
+    border-radius: $radius;
+    border-style: solid;
+}

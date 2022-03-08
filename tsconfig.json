@@ -2,7 +2,30 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@env": [
+        "environments/environment"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@layout/*": [
+        "app/layout/*"
+      ],
+      "@home/*": [
+        "app/modules/home/*"
+      ],
+      "@challenges/*": [
+        "app/modules/challenges/*"
+      ],
+      "@employee/*": [
+        "app/modules/employee/*"
+      ],
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
