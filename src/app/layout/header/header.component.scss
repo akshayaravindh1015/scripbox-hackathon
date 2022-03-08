@@ -2,7 +2,8 @@ header {
   display: flex;
   align-items: center;
   height: 4rem;
-  background-color: #044599;
+  background-color: var(--background-tertiary);
+  color: var(--foreground-light);
   padding: 10px 20px;
   .logo {
     margin: 0;
@@ -29,7 +30,6 @@ header {
     }
   }
   a {
-    color: white;
     text-decoration: none;
     margin: 0 5px;
     &:hover,
@@ -45,8 +45,6 @@ header {
     cursor: pointer;
     width: 64px;
     height: 64px;
-    // background-color: white;
-    // border-radius: 50%;
     img {
       width: 64px;
       height: 64px;
