@@ -31,7 +31,7 @@ describe('HeaderComponent', () => {
   });
 
   it('should have a logo', () => {
-    const logo = el.queryAll(By.css('.logo'))[0];
+    const logo = el.query(By.css('.logo'));
     expect(logo).toBeTruthy("Logo is not present in the header");
   });
 
