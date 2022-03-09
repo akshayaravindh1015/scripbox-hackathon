@@ -7,6 +7,7 @@ import { CoreComponent } from './core.component';
 import { LayoutModule } from '@layout/layout.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '@shared/shared.module';
+import { HomeModule } from '@home/home.module';
 @NgModule({
   declarations: [CoreComponent, LoginComponent],
   providers: [],
@@ -16,6 +17,7 @@ import { SharedModule } from '@shared/shared.module';
     RouterModule,
     LayoutModule,
     SharedModule,
+    HomeModule,
   ],
   exports: [CoreComponent],
 })
