@@ -7,7 +7,11 @@ export const authFeatureKey = 'auth';
 
 export const initialState: Auth = {
   isLoggedIn: true,
-  empId: '543265',
+  empData: {
+    empId: '543265',
+    myChallenges: [],
+    votedChallenges: [],
+  },
 };
 
 export const authReducer = createReducer(
@@ -15,9 +19,9 @@ export const authReducer = createReducer(
   on(login, (state, action) => ({
     ...state,
     isLoggedIn: true,
-    empId: action.empId,
+    empData: { ...state.empData, ...action.empData },
   })),
-  on(logOut, (state) => ({ ...state, isLoggedIn: false, empId: '' }))
+  on(logOut, (state) => initialState)
 );
 
 /*

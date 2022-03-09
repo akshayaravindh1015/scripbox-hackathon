@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    headers: {
+      'header-from-env': 'default header value',
+      environment: 'dev',
+    },
+    endpoints: {
+      challenges:
+        'https://data-upload-6bc54-default-rtdb.asia-southeast1.firebasedatabase.app/sciprbox-hackathon/dev/challenges',
+      employees:
+        'https://data-upload-6bc54-default-rtdb.asia-southeast1.firebasedatabase.app/sciprbox-hackathon/dev/employees',
+    },
+  },
 };
 
 /*

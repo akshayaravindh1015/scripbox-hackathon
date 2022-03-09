@@ -1,4 +1,8 @@
 export type Auth = {
   isLoggedIn: boolean;
-  empId: string;
+  empData: {
+    empId: string;
+    myChallenges: string[];
+    votedChallenges: string[];
+  };
 };
