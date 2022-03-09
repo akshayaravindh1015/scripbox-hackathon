@@ -22,6 +22,7 @@ export class InputComponent implements OnInit {
 
   inputController!: FormControl;
   errorMessage: string = '';
+  showTextArea: boolean = false;
 
   constructor(private _inputServc: InputService) {}
 
@@ -33,6 +34,8 @@ export class InputComponent implements OnInit {
     this.onLoad.emit(this.inputController);
     this.inputController.valueChanges.subscribe(this.inputChanges.bind(this));
     this.inputController.statusChanges.subscribe(this.inputChanges.bind(this));
+    this.showTextArea = this.props.type == 'textarea';
+    console.log(this.props, this.showTextArea, this.props.type == 'textarea');
   }
 
   private inputChanges() {

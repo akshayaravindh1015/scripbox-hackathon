@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>{{ state.title }}</h2>
+  <p>{{ state.subtitle }}</p>
+  <cust-input
+    *ngIf="titleState.show"
+    [label]="titleState.label"
+    [props]="titleState.props"
+    [validations]="titleState.validations"
+    (onLoad)="captureTitleController($event)"
+  ></cust-input>
+  <cust-input
+    *ngIf="descState.show"
+    [label]="descState.label"
+    [props]="descState.props"
+    [validations]="descState.validations"
+    (onLoad)="captureDescController($event)"
+  ></cust-input>
+  <cust-tags-input
+    *ngIf="tagsState.show"
+    [label]="tagsState.label"
+    [props]="tagsState.props"
+    (onLoad)="captureTagsController($event)"
+  ></cust-tags-input>
+  <div class="actions">
+    <cust-button (click)="submitTheIdea()">Publish</cust-button>
+    <cust-button (click)="cancelAddingNewChallenge()" type="secondary"
+      >Cancel</cust-button
+    >
+  </div>
+</div>

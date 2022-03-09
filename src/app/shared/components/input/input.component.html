@@ -1,5 +1,15 @@
 <div class="input-group" [class.error]="showError">
-    <label [for]="props.id">{{label}}</label>
-    <input [type]="props.type" [formControl]="inputController" (focusout)="foucsOutHanlder()">
-    <p class="error-message">{{errorMessage}}</p>
+  <label [for]="props.id">{{ label }}</label>
+  <input
+    *ngIf="!showTextArea"
+    [type]="props.type"
+    [formControl]="inputController"
+    (focusout)="foucsOutHanlder()"
+  />
+  <textarea
+    *ngIf="showTextArea"
+    [formControl]="inputController"
+    (focusout)="foucsOutHanlder()"
+  ></textarea>
+  <p class="error-message">{{ errorMessage }}</p>
 </div>

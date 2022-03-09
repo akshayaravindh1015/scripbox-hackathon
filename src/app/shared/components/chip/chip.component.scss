@@ -1,0 +1,11 @@
+.container {
+  padding: 5px 10px;
+  border-radius: 16px;
+  background-color: var(--background-tertiary);
+  color: var(--foreground-quaternary);
+  .close {
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

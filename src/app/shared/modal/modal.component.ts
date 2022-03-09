@@ -17,6 +17,7 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() id!: string;
+  @Input() size!: string;
   private element: any;
 
   public showModel: boolean = false;

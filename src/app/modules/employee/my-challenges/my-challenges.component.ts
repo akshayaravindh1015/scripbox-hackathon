@@ -14,14 +14,11 @@ export class MyChallengesComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddNewChallenge() {
-    this.openNewChallengeModal('add-a-new-challenge-container');
+    this._modalServc.open('add-a-new-challenge-container');
   }
 
-  openNewChallengeModal(id: string) {
-    this._modalServc.open(id);
-  }
-
-  onCloseNewChallenge(id: string) {
-    this._modalServc.close(id);
-  }
+  onCancelAddingNewChallenge = () => {
+    console.log('came here');
+    this._modalServc.close('add-a-new-challenge-container');
+  };
 }
