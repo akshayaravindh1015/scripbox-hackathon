@@ -1,12 +1,15 @@
 <header>
-  <h1 class="logo">ScripBox Hackathon</h1>
+  <h1 class="logo" routerLink="/home">ScripBox Hackathon</h1>
   <nav>
     <ul>
       <li>
         <a routerLink="/home">Home</a>
       </li>
       <li>
-        <a routerLink="/home">My-Challenges</a>
+        <a *ngIf="isLoggedIn$ | async" routerLink="/home">My-Challenges</a>
+      </li>
+      <li>
+        <a *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</a>
       </li>
     </ul>
     <ul *ngIf="isLoggedIn$ | async" class="user-actions">
@@ -17,7 +20,7 @@
         <a routerLink="/account">Account</a>
       </li>
       <li>
-        <a>Logout</a>
+        <a (click)="onLogOut($event)">Logout</a>
       </li>
     </ul>
   </nav>

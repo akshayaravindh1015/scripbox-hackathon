@@ -1,3 +1,4 @@
 export type Auth = {
-    isLoggedIn: boolean,
-}
+  isLoggedIn: boolean;
+  empId: string;
+};

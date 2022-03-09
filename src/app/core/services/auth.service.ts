@@ -9,17 +9,15 @@ import { AppState } from '@store/index';
   providedIn: 'root',
 })
 export class AuthService {
-  public isLoggedIn: boolean = false;
-
   constructor(private router: Router, private store: Store<AppState>) {}
 
-  login() {
-    this.store.dispatch(login());
+  login(empId: string) {
+    this.store.dispatch(login({ empId }));
     this.router.navigate(['/home']);
   }
 
   logOut() {
     this.store.dispatch(logOut());
-    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

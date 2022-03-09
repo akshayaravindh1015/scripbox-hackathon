@@ -2,7 +2,7 @@ import * as fromAuth from './auth.actions';
 
 describe('loadAuths', () => {
   it('should create an instance', () => {
-    expect(fromAuth.login()).toBeTruthy();
+    expect(fromAuth.login({ empId: 'Dummy UserName' })).toBeTruthy();
   });
 
   it('should return an action', () => {

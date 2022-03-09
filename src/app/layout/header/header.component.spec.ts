@@ -7,6 +7,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { Auth } from '@shared/models';
 import { initialState } from '@store/auth';
 import { reducers, metaReducers, TestStore } from '@store/index';
+import { AuthService } from '@core/index';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -15,6 +16,7 @@ describe('HeaderComponent', () => {
   let store: TestStore<Auth>;
 
   beforeEach(async () => {
+    const authServSpyObj = jasmine.createSpyObj('AuthService', ['logOut']);
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [
@@ -22,16 +24,16 @@ describe('HeaderComponent', () => {
           metaReducers,
         }),
       ],
-      providers: [{ provide: Store, useClass: TestStore }],
-    })
-      .compileComponents()
-      .then(() => {
-        fixture = TestBed.createComponent(HeaderComponent);
-        component = fixture.componentInstance;
-        el = fixture.debugElement;
-      });
+      providers: [
+        { provide: Store, useClass: TestStore },
+        { provide: AuthService, useValue: authServSpyObj },
+      ],
+    }).compileComponents();
   });
   beforeEach(inject([Store], (testStore: TestStore<Auth>) => {
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    el = fixture.debugElement;
     store = testStore; // save store reference for use in tests
     store.setState(initialState); // set default state
   }));

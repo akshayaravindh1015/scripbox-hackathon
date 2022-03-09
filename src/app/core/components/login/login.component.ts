@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   loginHanlder() {
     if (this.empIdController.valid) {
-      this._authServc.login();
+      this._authServc.login(this.empIdController.value);
     }
   }
 
