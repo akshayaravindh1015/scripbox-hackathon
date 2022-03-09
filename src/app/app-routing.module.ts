@@ -25,7 +25,6 @@ const routes: Routes = [
   {
     path: 'challenges',
     component: ChallengesComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: 'list',

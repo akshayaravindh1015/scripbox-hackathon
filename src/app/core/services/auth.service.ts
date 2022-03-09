@@ -13,7 +13,8 @@ export class AuthService {
 
   login(empId: string) {
     this.store.dispatch(login({ empId }));
-    this.router.navigate(['/home']);
+    // this.router.navigate(['/challenges/list']);
+    this.router.navigate(['/employee/challenges']);
   }
 
   logOut() {
