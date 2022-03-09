@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-challenges.component.scss'],
 })
 export class MyChallengesComponent implements OnInit {
+  challenges: any[] = [];
+
   constructor() {}
 
   ngOnInit(): void {}
