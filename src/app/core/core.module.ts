@@ -7,8 +7,8 @@ import { CoreComponent } from './core.component';
 import { LayoutModule } from '@layout/layout.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '@shared/shared.module';
-import { HomeModule } from '@home/home.module';
 import { EmployeeModule } from '@employee/employee.module';
+import { ChallengesModule } from '@challenges/challenges.module';
 @NgModule({
   declarations: [CoreComponent, LoginComponent],
   providers: [],
@@ -18,8 +18,8 @@ import { EmployeeModule } from '@employee/employee.module';
     RouterModule,
     LayoutModule,
     SharedModule,
-    HomeModule,
     EmployeeModule,
+    ChallengesModule,
   ],
   exports: [CoreComponent],
 })

@@ -6,8 +6,8 @@ import { login, logOut } from '.';
 export const authFeatureKey = 'auth';
 
 export const initialState: Auth = {
-  isLoggedIn: false,
-  empId: '',
+  isLoggedIn: true,
+  empId: '543265',
 };
 
 export const authReducer = createReducer(

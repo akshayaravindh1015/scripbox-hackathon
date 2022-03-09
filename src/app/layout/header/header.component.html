@@ -1,15 +1,27 @@
 <header>
-  <h1 class="logo" routerLink="/home">ScripBox Hackathon</h1>
+  <h1 class="logo" routerLinkActive="active" routerLink="/home">
+    ScripBox Hackathon
+  </h1>
   <nav>
     <ul>
       <li>
-        <a routerLink="/home">Home</a>
+        <a routerLinkActive="active" routerLink="/challenges/list">Home</a>
       </li>
       <li>
-        <a *ngIf="isLoggedIn$ | async" routerLink="/home">My-Challenges</a>
+        <a
+          *ngIf="isLoggedIn$ | async"
+          routerLinkActive="active"
+          routerLink="/employee/challenges"
+          >My-Challenges</a
+        >
       </li>
       <li>
-        <a *ngIf="!(isLoggedIn$ | async)" routerLink="/login">Login</a>
+        <a
+          *ngIf="!(isLoggedIn$ | async)"
+          routerLinkActive="active"
+          routerLink="/login"
+          >Login</a
+        >
       </li>
     </ul>
     <ul *ngIf="isLoggedIn$ | async" class="user-actions">
@@ -17,19 +29,20 @@
         <a (click)="toggleTheme($event)">Theme</a>
       </li>
       <li>
-        <a routerLink="/account">Account</a>
+        <a routerLinkActive="active" routerLink="/employee/info">Account</a>
       </li>
       <li>
         <a (click)="onLogOut($event)">Logout</a>
       </li>
     </ul>
   </nav>
-  <!-- 
-        <div class="icon-container">
-            <img src="assets/person-circle.svg" alt="my-account">
-        </div>
-        <div class="icon-container">
-            <img src="assets/logout.svg" alt="logout">
-        </div> 
-    -->
 </header>
+
+<!-- 
+  <div class="icon-container">
+      <img src="assets/person-circle.svg" alt="my-account">
+  </div>
+  <div class="icon-container">
+      <img src="assets/logout.svg" alt="logout">
+  </div> 
+-->

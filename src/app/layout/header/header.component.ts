@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   isLoggedIn$ = this.store.select(isLoggedIn);
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._themeServc.setDarkTheme();
+  }
 
   toggleTheme(event: Event) {
     event.preventDefault();

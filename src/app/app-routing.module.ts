@@ -1,36 +1,56 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from '@home/index';
 import { ChallengeInfoComponent } from '@challenges/index';
-import { AccountInfoComponent } from '@employee/index';
 import { LoginComponent } from '@core/components/login/login.component';
 import { AuthGuard } from '@core/services/auth.guard';
+import { ChallengesListComponent } from '@challenges/challenges-list/challenges-list.component';
+import {
+  EmployeeComponent,
+  MyChallengesComponent,
+  AccountInfoComponent,
+} from '@employee/index';
+import { ChallengesComponent } from '@challenges/challenges.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
+    redirectTo: 'challenges/list',
   },
   {
     path: 'login',
     component: LoginComponent,
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [],
+    path: 'challenges',
+    component: ChallengesComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'list',
+        component: ChallengesListComponent,
+      },
+      {
+        path: ':id',
+        component: ChallengeInfoComponent,
+      },
+    ],
   },
   {
-    path: 'challenge/:id',
-    component: ChallengeInfoComponent,
+    path: 'employee',
+    component: EmployeeComponent,
     canActivate: [AuthGuard],
-  },
-  {
-    path: 'account',
-    component: AccountInfoComponent,
-    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'info',
+        component: AccountInfoComponent,
+      },
+      {
+        path: 'challenges',
+        component: MyChallengesComponent,
+      },
+    ],
   },
 ];
 
