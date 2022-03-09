@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LOGIN_SCHEMA } from 'schema/login.schema';
 
+import { AuthService } from '@core/index';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -13,12 +14,13 @@ export class LoginComponent implements OnInit {
 
   empIdController!: FormControl;
 
-  constructor() {}
+  constructor(private _authServc: AuthService) {}
 
   ngOnInit(): void {}
 
   loginHanlder() {
     if (this.empIdController.valid) {
+      this._authServc.login();
     }
   }
 

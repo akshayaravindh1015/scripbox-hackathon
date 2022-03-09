@@ -25,6 +25,9 @@
       "@employee/*": [
         "app/modules/employee/*"
       ],
+      "@store/*": [
+        "app/store/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

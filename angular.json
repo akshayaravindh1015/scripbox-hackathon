@@ -117,5 +117,8 @@
       }
     }
   },
-  "defaultProject": "scripbox-hackathon"
+  "defaultProject": "scripbox-hackathon",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
