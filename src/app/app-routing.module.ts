@@ -5,6 +5,7 @@ import { HomeComponent } from '@home/index';
 import { ChallengeInfoComponent } from '@challenges/index';
 import { AccountInfoComponent } from '@employee/index';
 import { LoginComponent } from '@core/components/login/login.component';
+import { AuthGuard } from '@core/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,16 +20,17 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: RouteGuard,
+    canActivate: [AuthGuard],
   },
   {
     path: 'challenge/:id',
     component: ChallengeInfoComponent,
-    // canActivate: RouteGuard,
+    canActivate: [AuthGuard],
   },
   {
     path: 'account',
     component: AccountInfoComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

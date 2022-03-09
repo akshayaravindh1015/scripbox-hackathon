@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { ThemeService } from '@layout/services/theme.service';
+import { AppState, isLoggedIn } from '@store/index';
 
 @Component({
   selector: 'cust-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  
+  constructor(
+    private _themeServc: ThemeService,
+    private store: Store<AppState>
+  ) {}
 
-  constructor(private _themeServc: ThemeService) { }
-
-  ngOnInit(): void {
-  }
+  isLoggedIn$ = this.store.select(isLoggedIn);
+  ngOnInit(): void {}
 
   toggleTheme(event: Event) {
     event.preventDefault();
@@ -23,5 +26,4 @@ export class HeaderComponent implements OnInit {
       this._themeServc.setDarkTheme();
     }
   }
-
 }

@@ -9,7 +9,7 @@
         <a>My-Challenges</a>
       </li>
     </ul>
-    <ul>
+    <ul *ngIf="isLoggedIn$ | async" class="user-actions">
       <li>
         <a (click)="toggleTheme($event)">Theme</a>
       </li>

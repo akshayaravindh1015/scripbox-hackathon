@@ -1,26 +1,40 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { HeaderComponent } from './header.component';
+import { Store, StoreModule } from '@ngrx/store';
+import { Auth } from '@shared/models';
+import { initialState } from '@store/auth';
+import { reducers, metaReducers, TestStore } from '@store/index';
 
 describe('HeaderComponent', () => {
-
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let el: DebugElement;
+  let store: TestStore<Auth>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [HeaderComponent],
+      imports: [
+        StoreModule.forRoot(reducers, {
+          metaReducers,
+        }),
+      ],
+      providers: [{ provide: Store, useClass: TestStore }],
     })
-    .compileComponents()
-    .then(() => {
-      fixture = TestBed.createComponent(HeaderComponent);
-      component = fixture.componentInstance;
-      el = fixture.debugElement;
-    });
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(HeaderComponent);
+        component = fixture.componentInstance;
+        el = fixture.debugElement;
+      });
   });
+  beforeEach(inject([Store], (testStore: TestStore<Auth>) => {
+    store = testStore; // save store reference for use in tests
+    store.setState(initialState); // set default state
+  }));
 
   beforeEach(() => {
     fixture.detectChanges();
@@ -32,7 +46,13 @@ describe('HeaderComponent', () => {
 
   it('should have a logo', () => {
     const logo = el.query(By.css('.logo'));
-    expect(logo).toBeTruthy("Logo is not present in the header");
+    expect(logo).toBeTruthy('Logo is not present in the header');
   });
 
+  it('should hide user actoins if not logged in', () => {
+    const actions = el.query(By.css('.user-actions'));
+    expect(actions).toBeFalsy(
+      'User actions are incorrectly shown in the header'
+    );
+  });
 });

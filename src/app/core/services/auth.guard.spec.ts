@@ -19,9 +19,7 @@ describe('AuthGuard', () => {
           metaReducers,
         }),
       ],
-      providers: [
-        { provide: Store, useClass: TestStore }, // use test store instead of ngrx store
-      ],
+      providers: [{ provide: Store, useClass: TestStore }],
     });
     guard = TestBed.inject(AuthGuard);
   });
