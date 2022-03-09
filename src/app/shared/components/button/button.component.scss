@@ -26,6 +26,12 @@ button {
     color: var(--foreground-secondary);
     border-color: var(--primary-dark);
   }
+  &.round {
+    min-width: 64px;
+    min-height: 64px;
+    font-size: 32px;
+    border-radius: 100%;
+  }
   &:disabled {
     background-color: #e7e7e7;
     color: black;
