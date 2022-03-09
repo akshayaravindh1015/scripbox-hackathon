@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '@shared/modal/modal.service';
 
 @Component({
   selector: 'app-my-challenges',
@@ -8,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class MyChallengesComponent implements OnInit {
   challenges: any[] = [];
 
-  constructor() {}
+  constructor(private _modalServc: ModalService) {}
 
   ngOnInit(): void {}
 
-  onAddNewChallenge() {}
+  onAddNewChallenge() {
+    this.openNewChallengeModal('add-a-new-challenge-container');
+  }
+
+  openNewChallengeModal(id: string) {
+    this._modalServc.open(id);
+  }
+
+  onCloseNewChallenge(id: string) {
+    this._modalServc.close(id);
+  }
 }
