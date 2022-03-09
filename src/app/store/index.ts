@@ -18,6 +18,9 @@ export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
 };
 
+export * from './global.selectors';
+export * from './test-store';
+
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? []
   : [];

@@ -1,12 +1,12 @@
-import * as AuthActions from './auth.actions';
+import * as fromAuth from './auth.actions';
 
-describe('Auth', () => {
+describe('loadAuths', () => {
   it('should create an instance', () => {
-    expect(new AuthActions.Login()).toBeTruthy();
+    expect(fromAuth.login()).toBeTruthy();
   });
 
-  it('should create an instance', () => {
-    expect(new AuthActions.LogOut().type).toBe(
+  it('should return an action', () => {
+    expect(fromAuth.logOut().type).toBe(
       '[Auth] LogOut',
       'Wrong type in Auth Actions'
     );

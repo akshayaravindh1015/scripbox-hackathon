@@ -1,24 +1,17 @@
-import { AuthActionTypes } from '.';
+import { login } from '.';
 import { authReducer, initialState } from './auth.reducer';
 
 describe('Auth Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+  it('an unknown action should return the previous state', () => {
+    const action = {} as any;
 
-      const result = authReducer(initialState, action);
+    const result = authReducer(initialState, action);
 
-      expect(result).toBe(initialState);
-    });
+    expect(result).toBe(initialState);
   });
+  it('an login action should return the login state', () => {
+    const result = authReducer(initialState, login);
 
-  describe('an login action', () => {
-    it('should return the login state', () => {
-      const action = { type: AuthActionTypes.LOGOUT } as any;
-
-      const result = authReducer(initialState, action);
-
-      expect(result.isLoggedIn).toBe(false, 'Logging Out failed.');
-    });
+    expect(result.isLoggedIn).toBe(true, 'Logging In failed.');
   });
 });
