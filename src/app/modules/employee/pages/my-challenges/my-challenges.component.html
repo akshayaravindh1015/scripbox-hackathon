@@ -1,18 +1,20 @@
 <h2>My Challenges</h2>
 <hr />
 <br />
-<ul *ngIf="challenges.length > 0; else newChallenge">
-  <li *ngFor="let challenge of challenges">
-    <card size="big"></card>
+<ul *ngIf="challengeIds.length > 0; else newChallenge">
+  <li *ngFor="let id of challengeIds">
+    <challenge-card [challengeId]="id"></challenge-card>
   </li>
 </ul>
+
 <ng-template #newChallenge>
   <div class="flexCenter">
     <cust-button (click)="onAddNewChallenge()">Add a new challenge</cust-button>
   </div>
 </ng-template>
+
 <cust-button
-  *ngIf="challenges.length !== 0"
+  *ngIf="challengeIds.length !== 0"
   id="new-challenge-button"
   (click)="onAddNewChallenge()"
   shape="round"

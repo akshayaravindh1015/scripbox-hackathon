@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '@store/index';
+import { myChallengesIds$ } from '@store/global.selectors';
 import { ModalService } from '@shared/modal/modal.service';
 
 @Component({
@@ -7,12 +11,19 @@ import { ModalService } from '@shared/modal/modal.service';
   styleUrls: ['./my-challenges.component.scss'],
 })
 export class MyChallengesComponent implements OnInit {
-  challenges: any[] = [];
+  challengeIds: string[] = [];
   showNewOpenModal: boolean = false;
 
-  constructor(private _modalServc: ModalService) {}
+  constructor(
+    private _modalServc: ModalService,
+    private store: Store<AppState>
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select(myChallengesIds$)
+      .subscribe((ids) => (this.challengeIds = ids));
+  }
 
   onAddNewChallenge() {
     this.showNewOpenModal = true;

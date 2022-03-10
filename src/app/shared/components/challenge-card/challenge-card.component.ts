@@ -32,7 +32,6 @@ export class ChallengeCardComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    console.log(this.challengeId);
     this.state$ = this.store.select(challenge$(this.challengeId));
     // this.state$.subscribe((data) => console.log(data));
   }

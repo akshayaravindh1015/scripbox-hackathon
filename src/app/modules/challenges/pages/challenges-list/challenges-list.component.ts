@@ -13,7 +13,5 @@ export class ChallengesListComponent implements OnInit {
 
   challenges$ = this.store.select(challenegsList$);
 
-  ngOnInit(): void {
-    this.challenges$.subscribe((data) => console.log(data));
-  }
+  ngOnInit(): void {}
 }
