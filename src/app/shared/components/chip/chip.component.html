@@ -1,4 +1,6 @@
 <div class="container">
   <ng-content></ng-content>
-  <span (click)="removeChip()" class="close">x</span>
+  <span *ngIf="showRemove" (click)="removeChip()" class="close"
+    ><fa-icon [icon]="close"></fa-icon
+  ></span>
 </div>

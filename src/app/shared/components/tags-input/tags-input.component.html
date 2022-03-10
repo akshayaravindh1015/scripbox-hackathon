@@ -9,6 +9,7 @@
     <cust-chip
       *ngFor="let tag of tags; let i = index"
       (remove)="removeTag(i)"
+      [showRemove]="true"
       >{{ tag }}</cust-chip
     >
   </div>

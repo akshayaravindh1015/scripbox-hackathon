@@ -2,16 +2,7 @@
 <hr />
 <br />
 <ul>
-  <li>
-    <card size="big"></card>
-  </li>
-  <li>
-    <card size="big"></card>
-  </li>
-  <li>
-    <card size="big"></card>
-  </li>
-  <li>
-    <card size="big"></card>
+  <li *ngFor="let challenge of challenges$ | async">
+    <challenge-card [challengeId]="challenge.id"></challenge-card>
   </li>
 </ul>

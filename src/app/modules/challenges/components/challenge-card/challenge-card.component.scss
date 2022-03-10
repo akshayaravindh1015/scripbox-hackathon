@@ -1,0 +1,48 @@
+:host {
+  width: 100%;
+}
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  .details {
+    .title {
+      margin: 0;
+      color: var(--foreground-default);
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    .bookmark {
+      margin-left: 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .chips-container {
+      display: flex;
+      flex-direction: row;
+      cust-chip {
+        margin-right: 10px;
+      }
+    }
+    margin-right: 40px;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .vote-button {
+      font-size: 24px;
+      &.up {
+        color: green;
+      }
+      &.down {
+        color: red;
+      }
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}
