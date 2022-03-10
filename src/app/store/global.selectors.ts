@@ -1,11 +1,11 @@
-import { createSelector, props } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { AppState } from '.';
 
 //Auth
-export const isLoggedIn = (state: AppState) => state.auth.isLoggedIn;
+export const isLoggedIn = (state: AppState) => state.empAuth.isLoggedIn;
 
 //Employee Details
-export const empData$ = (state: AppState) => state.auth.empData;
+export const empData$ = (state: AppState) => state.empAuth.empData;
 export const empId$ = createSelector(empData$, (data) => data.empId);
 
 //Challenges

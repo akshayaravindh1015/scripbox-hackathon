@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { AppState, empId$ } from '@store/index';
 import { NEW_CHALLENGE_SCHEMA } from 'schema/new-challenge.schema';
-import { AddChallengeService } from '@employee/services/add-challenge.service';
+import { AddChallengeService } from '@challenges/index';
 
 @Component({
   selector: 'new-challenge',

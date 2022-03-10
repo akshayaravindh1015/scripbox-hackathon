@@ -6,18 +6,18 @@ import {
   MetaReducer,
 } from '@ngrx/store';
 
-import { authReducer } from './auth';
-import { Auth } from '@shared/models';
+import { empAuthReducer } from './emp-auth';
+import { Employee_Auth } from '@shared/models';
 import { challengeReducer, ChallengesState } from './challenges';
 import { environment } from '../../environments/environment';
 
 export interface AppState {
-  auth: Auth;
+  empAuth: Employee_Auth;
   challenges: ChallengesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  auth: authReducer,
+  empAuth: empAuthReducer,
   challenges: challengeReducer,
 };
 

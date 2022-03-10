@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ChallengeInfoComponent } from '@challenges/index';
 import { LoginComponent } from '@core/components/login/login.component';
 import { AuthGuard } from '@core/services/auth.guard';
-import { ChallengesListComponent } from '@challenges/challenges-list/challenges-list.component';
 import {
   EmployeeComponent,
   MyChallengesComponent,
   AccountInfoComponent,
 } from '@employee/index';
-import { ChallengesComponent } from '@challenges/challenges.component';
-import { GetChallengesResolver } from '@challenges/services/get-challenges.resolver';
+import {
+  GetChallengesResolver,
+  ChallengesComponent,
+  ChallengesListComponent,
+  ChallengeInfoComponent,
+} from '@challenges/index';
 
 const routes: Routes = [
   {

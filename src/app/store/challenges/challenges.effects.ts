@@ -12,9 +12,9 @@ import {
 } from 'rxjs/operators';
 
 import { AppState, empData$ } from '..';
-import { addToMyCreatedChallenges } from '@store/auth';
+import { addToMyCreatedChallenges } from '@store/emp-auth';
 import { addChallenge } from './challenges.actions';
-import { AddChallengeService } from '@employee/services/add-challenge.service';
+import { AddChallengeService } from '@challenges/index';
 
 @Injectable()
 export class ChallengesEffects {

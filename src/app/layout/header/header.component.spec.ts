@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { HeaderComponent } from './header.component';
 import { Store, StoreModule } from '@ngrx/store';
-import { Auth } from '@shared/models';
-import { initialState } from '@store/auth';
+import { Employee_Auth } from '@shared/models';
+import { initialEmpAuthState } from '@store/emp-auth';
 import { reducers, metaReducers, TestStore } from '@store/index';
 import { AuthService } from '@core/index';
 
@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let el: DebugElement;
-  let store: TestStore<Auth>;
+  let store: TestStore<Employee_Auth>;
 
   beforeEach(async () => {
     const authServSpyObj = jasmine.createSpyObj('AuthService', ['logOut']);
@@ -30,12 +30,12 @@ describe('HeaderComponent', () => {
       ],
     }).compileComponents();
   });
-  beforeEach(inject([Store], (testStore: TestStore<Auth>) => {
+  beforeEach(inject([Store], (testStore: TestStore<Employee_Auth>) => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     el = fixture.debugElement;
     store = testStore; // save store reference for use in tests
-    store.setState(initialState); // set default state
+    store.setState(initialEmpAuthState); // set default state
   }));
 
   beforeEach(() => {

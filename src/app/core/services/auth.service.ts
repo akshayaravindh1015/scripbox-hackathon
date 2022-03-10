@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { BackendService } from '@shared/services/backend.service';
 import { AppState } from '@store/index';
-import { login, logOut } from '@store/auth';
+import { login, logOut } from '@store/emp-auth';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { EmpData } from '@shared/models';

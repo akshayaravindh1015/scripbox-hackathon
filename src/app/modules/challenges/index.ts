@@ -1,5 +1,5 @@
-import { ChallengeInfoComponent } from './challenge-info/challenge-info.component';
-import { ChallengesListComponent } from './challenges-list/challenges-list.component';
+import { ChallengeInfoComponent } from './pages/challenge-info/challenge-info.component';
+import { ChallengesListComponent } from './pages/challenges-list/challenges-list.component';
 import { ChallengesComponent } from './challenges.component';
 
 export const components: any[] = [
@@ -15,6 +15,10 @@ export const directives: any[] = [];
 // export const resolvers: any[] = [];
 // export const guards: any[] = [];
 
-export * from './challenge-info/challenge-info.component';
-export * from './challenges-list/challenges-list.component';
+export * from './pages/challenge-info/challenge-info.component';
+export * from './pages/challenges-list/challenges-list.component';
 export * from './challenges.component';
+
+//Services
+export * from './services/add-challenge.service';
+export * from './services/get-challenges.resolver';

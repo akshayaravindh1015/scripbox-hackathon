@@ -1,2 +1,2 @@
-export * from './auth.model';
+export * from './emp-auth.model';
 export * from './challenge.model';

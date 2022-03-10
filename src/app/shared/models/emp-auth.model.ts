@@ -5,7 +5,7 @@ export type EmpData = {
   downVotedChllenges: string[];
   bookMarkedChallenges: string[];
 };
-export type Auth = {
+export type Employee_Auth = {
   isLoggedIn: boolean;
   empData: EmpData;
 };

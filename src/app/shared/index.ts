@@ -1,9 +1,10 @@
-import { CardComponent } from './components/card/card.component';
-import { InputComponent } from './components/input/input.component';
-import { ButtonComponent } from './components/button/button.component';
-import { TagsInputComponent } from './components/tags-input/tags-input.component';
-import { ChipComponent } from './components/chip/chip.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import { CardComponent } from './UI/card/card.component';
+import { InputComponent } from './UI/input/input.component';
+import { TagsInputComponent } from './UI/tags-input/tags-input.component';
+import { ChipComponent } from './UI/chip/chip.component';
+import { SpinnerComponent } from './UI/spinner/spinner.component';
+import { ButtonComponent } from './UI/button/button.component';
+import { NewChallengeComponent } from './components/new-challenge/new-challenge.component';
 import { ChallengeCardComponent } from './components/challenge-card/challenge-card.component';
 
 export const components: any[] = [
@@ -14,6 +15,7 @@ export const components: any[] = [
   ChipComponent,
   SpinnerComponent,
   ChallengeCardComponent,
+  NewChallengeComponent,
 ];
 
 export const pipes: any[] = [];
@@ -23,10 +25,11 @@ export const directives: any[] = [];
 // export const resolvers: any[] = [];
 // export const guards: any[] = [];
 
-export * from './components/card/card.component';
-export * from './components/input/input.component';
-export * from './components/button/button.component';
-export * from './components/tags-input/tags-input.component';
-export * from './components/chip/chip.component';
-export * from './components/spinner/spinner.component';
+export * from './UI/card/card.component';
+export * from './UI/input/input.component';
+export * from './UI/tags-input/tags-input.component';
+export * from './UI/chip/chip.component';
+export * from './UI/spinner/spinner.component';
+export * from './UI/button/button.component';
 export * from './components/challenge-card/challenge-card.component';
+export * from './components/new-challenge/new-challenge.component';

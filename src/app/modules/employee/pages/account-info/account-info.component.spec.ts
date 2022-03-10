@@ -7,7 +7,7 @@ import {
   tick,
 } from '@angular/core/testing';
 import { StoreModule, Store } from '@ngrx/store';
-import { Auth } from '@shared/models';
+import { Employee_Auth } from '@shared/models';
 import { reducers, metaReducers } from '@store/index';
 import { TestStore } from '@store/test-store';
 

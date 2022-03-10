@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 export const login = createAction(
-  '[Auth] Login',
+  '[Emp-Auth] Login',
   props<{
     empData: {
       empId: string;
@@ -13,25 +13,25 @@ export const login = createAction(
   }>()
 );
 
-export const logOut = createAction('[Auth] LogOut');
+export const logOut = createAction('[Emp-Auth] LogOut');
 
 export const addToMyCreatedChallenges = createAction(
-  '[Auth] Add To My Created Challenged',
+  '[Emp-Auth] Add To My Created Challenged',
   props<{ id: string }>()
 );
 export const addToMyUpVotedChallenges = createAction(
-  '[Auth] Add To My UpVoted Challenged',
+  '[Emp-Auth] Add To My UpVoted Challenged',
   props<{ id: string }>()
 );
 export const addToMyDownVotedChallenges = createAction(
-  '[Auth] Add To My DownVoted Challenged',
+  '[Emp-Auth] Add To My DownVoted Challenged',
   props<{ id: string }>()
 );
 export const addToMyBookMarkedChallenges = createAction(
-  '[Auth] Add To My BookMarked Challenged',
+  '[Emp-Auth] Add To My BookMarked Challenged',
   props<{ id: string }>()
 );
 export const removeFromMyBookMarkedChallenges = createAction(
-  '[Auth] Add To My BookMarked Challenged',
+  '[Emp-Auth] Add To My BookMarked Challenged',
   props<{ id: string }>()
 );

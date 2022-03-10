@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { Auth } from '@shared/models';
+import { Employee_Auth } from '@shared/models';
 import { login, logOut } from '.';
 import {
   addToMyBookMarkedChallenges,
@@ -8,11 +8,11 @@ import {
   addToMyDownVotedChallenges,
   addToMyUpVotedChallenges,
   removeFromMyBookMarkedChallenges,
-} from './auth.actions';
+} from './emp-auth.actions';
 
-export const authFeatureKey = 'auth';
+export const empAuthFeatureKey = 'emp-auth';
 
-export const initialState: Auth = {
+export const initialEmpAuthState: Employee_Auth = {
   isLoggedIn: true,
   empData: {
     empId: '12345',
@@ -23,14 +23,14 @@ export const initialState: Auth = {
   },
 };
 
-export const authReducer = createReducer(
-  initialState,
+export const empAuthReducer = createReducer(
+  initialEmpAuthState,
   on(login, (state, action) => ({
     ...state,
     isLoggedIn: true,
     empData: { ...state.empData, ...action.empData },
   })),
-  on(logOut, () => initialState),
+  on(logOut, () => initialEmpAuthState),
   on(addToMyCreatedChallenges, (state, action) => ({
     ...state,
     empData: {
@@ -79,12 +79,12 @@ export const authReducer = createReducer(
 /*
 export function authReducer(state = initialState, action: Action): Auth {
   switch (action.type) {
-    case AuthActionTypes.LOGIN:
+    case EmpAuthActionTypes.LOGIN:
       return {
         ...state,
         isLoggedIn: true,
       };
-    case AuthActionTypes.LOGOUT:
+    case EmpAuthActionTypes.LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
