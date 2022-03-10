@@ -8,6 +8,7 @@ import { AppState } from '@store/index';
 import { login, logOut } from '@store/auth';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { EmpData } from '@shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -23,10 +24,12 @@ export class AuthService {
     const EMP_END_POINT = `${environment.api.endpoints.employees}/${empId}`;
     this.checkIfNewUserElsePopulate(empId).subscribe((isNewUser) => {
       if (isNewUser) {
-        const empData = {
+        const empData: EmpData = {
           empId: empId,
           myChallenges: [],
           votedChallenges: [],
+          bookMarkedChallenges: [],
+          downVotedChllenges: [],
         };
         this._backendServc.putCall(EMP_END_POINT, empData).subscribe(
           (data) => {

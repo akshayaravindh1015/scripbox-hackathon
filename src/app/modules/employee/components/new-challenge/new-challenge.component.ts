@@ -1,8 +1,10 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
-import { AddChallengeService } from '@employee/services/add-challenge.service';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { AppState, empId$ } from '@store/index';
 import { NEW_CHALLENGE_SCHEMA } from 'schema/new-challenge.schema';
+import { AddChallengeService } from '@employee/services/add-challenge.service';
 
 @Component({
   selector: 'new-challenge',
@@ -22,10 +24,19 @@ export class NewChallengeComponent implements OnInit {
   tagsController!: FormControl;
 
   isLoading: boolean = false;
+  empId: string = '';
 
-  constructor(private _addChallengeServc: AddChallengeService) {}
+  constructor(
+    private _addChallengeServc: AddChallengeService,
+    private store: Store<AppState>
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select(empId$)
+      .subscribe((id) => (this.empId = id))
+      .unsubscribe();
+  }
 
   captureTitleController(controller: FormControl) {
     this.titleController = controller;
@@ -44,12 +55,15 @@ export class NewChallengeComponent implements OnInit {
     this.isLoading = true;
     this._addChallengeServc
       .addANewChallenge({
+        id: '',
+        empId: this.empId,
         title: this.titleController.value,
         desc: this.descController.value,
         tags: this.tagsController.value,
         upvotes: [],
         downvotes: [],
         comments: [],
+        createdAt: new Date(),
       })
       .subscribe(
         () => {

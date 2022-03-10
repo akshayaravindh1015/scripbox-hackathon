@@ -19,23 +19,41 @@ export class AddChallengeService {
     private store: Store<AppState>
   ) {}
 
-  addANewChallenge(challengePayload: Partial<Challenge>): Observable<any> {
+  addANewChallenge(challengePayload: Challenge): Observable<any> {
     return this._backendServc
-      .postCall(CHALLENGES_ENDPIONT, challengePayload)
+      .postCall(CHALLENGES_ENDPIONT, {
+        ...challengePayload,
+        createdAt: JSON.stringify(challengePayload.createdAt),
+      })
       .pipe(
         map((result) => {
           const newChallenge = challengeFromFactory({
-            id: result.name,
             ...challengePayload,
+            id: result.name,
           });
           this.store.dispatch(addChallenge({ challenge: newChallenge }));
         }),
         catchError((error) => {
           const message = 'Adding the challenge failed!...';
-          alert(message);
+          alert(message + '\n' + error.message);
           // throw new Error(message);
           return error.message;
         })
       );
+  }
+  updateEmployeeChallenges(
+    empId: string,
+    empChallenges: string[]
+  ): Observable<any> {
+    const EMP_CHALLENGES_POINT = `${environment.api.endpoints.employees}/${empId}/empData/myChallenges`;
+    return this._backendServc.putCall(EMP_CHALLENGES_POINT, empChallenges).pipe(
+      map(() => {}),
+      catchError((error) => {
+        const message = 'Adding the challenge id to my challenges failed!...';
+        alert(message + '\n' + error.message);
+        throw new Error(message);
+        // return error.message;
+      })
+    );
   }
 }

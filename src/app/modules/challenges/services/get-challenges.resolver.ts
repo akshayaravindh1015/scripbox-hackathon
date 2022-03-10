@@ -41,6 +41,7 @@ export class GetChallengesResolver implements Resolve<Challenge[]> {
         return challenges;
       }),
       catchError((error: any) => {
+        alert('Failed to fetch the challenges list: \n' + error.message);
         this.store.dispatch(resetChallenges());
         return of([]);
       })

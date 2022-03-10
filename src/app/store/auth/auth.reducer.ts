@@ -1,16 +1,25 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 
 import { Auth } from '@shared/models';
 import { login, logOut } from '.';
+import {
+  addToMyBookMarkedChallenges,
+  addToMyCreatedChallenges,
+  addToMyDownVotedChallenges,
+  addToMyUpVotedChallenges,
+  removeFromMyBookMarkedChallenges,
+} from './auth.actions';
 
 export const authFeatureKey = 'auth';
 
 export const initialState: Auth = {
   isLoggedIn: true,
   empData: {
-    empId: '543265',
+    empId: '12345',
     myChallenges: [],
     votedChallenges: [],
+    bookMarkedChallenges: [],
+    downVotedChllenges: [],
   },
 };
 
@@ -21,7 +30,50 @@ export const authReducer = createReducer(
     isLoggedIn: true,
     empData: { ...state.empData, ...action.empData },
   })),
-  on(logOut, (state) => initialState)
+  on(logOut, () => initialState),
+  on(addToMyCreatedChallenges, (state, action) => ({
+    ...state,
+    empData: {
+      ...state.empData,
+      myChallenges: [...state.empData.myChallenges, action.id],
+    },
+  })),
+  on(addToMyUpVotedChallenges, (state, action) => ({
+    ...state,
+    empData: {
+      ...state.empData,
+      votedChallenges: [...state.empData.votedChallenges, action.id],
+      downVotedChllenges: state.empData.downVotedChllenges.filter(
+        (id) => id != action.id
+      ),
+    },
+  })),
+  on(addToMyDownVotedChallenges, (state, action) => ({
+    ...state,
+    empData: {
+      ...state.empData,
+      downVotedChllenges: [...state.empData.downVotedChllenges, action.id],
+      votedChallenges: state.empData.votedChallenges.filter(
+        (id) => id != action.id
+      ),
+    },
+  })),
+  on(addToMyBookMarkedChallenges, (state, action) => ({
+    ...state,
+    empData: {
+      ...state.empData,
+      bookMarkedChallenges: [...state.empData.bookMarkedChallenges, action.id],
+    },
+  })),
+  on(removeFromMyBookMarkedChallenges, (state, action) => ({
+    ...state,
+    empData: {
+      ...state.empData,
+      bookMarkedChallenges: state.empData.bookMarkedChallenges.filter(
+        (id) => id != action.id
+      ),
+    },
+  }))
 );
 
 /*
