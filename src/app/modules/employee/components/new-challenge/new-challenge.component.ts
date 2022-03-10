@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AddChallengeService } from '@employee/services/add-challenge.service';
 import { NEW_CHALLENGE_SCHEMA } from 'schema/new-challenge.schema';
 
 @Component({
@@ -20,7 +21,9 @@ export class NewChallengeComponent implements OnInit {
   descController!: FormControl;
   tagsController!: FormControl;
 
-  constructor() {}
+  isLoading: boolean = false;
+
+  constructor(private _addChallengeServc: AddChallengeService) {}
 
   ngOnInit(): void {}
 
@@ -38,6 +41,26 @@ export class NewChallengeComponent implements OnInit {
     this.closeFn();
   }
   submitTheIdea() {
-    this.closeFn();
+    this.isLoading = true;
+    this._addChallengeServc
+      .addANewChallenge({
+        title: this.titleController.value,
+        desc: this.descController.value,
+        tags: this.tagsController.value,
+        upvotes: 0,
+        downvotes: 0,
+        comments: [],
+      })
+      .subscribe(
+        () => {
+          this.closeFn();
+          this.isLoading = false;
+        }, // Success in handling
+        () => {}, // No need to handle errors - already handled in the sevice
+        () => {
+          this.closeFn();
+          this.isLoading = false;
+        }
+      );
   }
 }

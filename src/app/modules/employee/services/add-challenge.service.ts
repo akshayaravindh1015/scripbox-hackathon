@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '@env';
-import { Challenge } from '@shared/models';
+import { Challenge, challengeFromFactory } from '@shared/models';
 import { BackendService } from '@shared/services/backend.service';
-import { catchError, map } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
 import { AppState } from '@store/index';
+import { addChallenge } from '@store/challenges';
 
 const CHALLENGES_ENDPIONT = environment.api.endpoints.challenges;
 @Injectable({
@@ -18,14 +19,23 @@ export class AddChallengeService {
     private store: Store<AppState>
   ) {}
 
-  addANewChallenge(newChallenge: Partial<Challenge>): Observable<any> {
-    return this._backendServc.postCall(CHALLENGES_ENDPIONT, newChallenge).pipe(
-      map((id) => {
-        console.log(id);
-      }),
-      catchError((error) => {
-        return error.message;
-      })
-    );
+  addANewChallenge(challengePayload: Partial<Challenge>): Observable<any> {
+    return this._backendServc
+      .postCall(CHALLENGES_ENDPIONT, challengePayload)
+      .pipe(
+        map((result) => {
+          const newChallenge = challengeFromFactory({
+            id: result.name,
+            ...challengePayload,
+          });
+          this.store.dispatch(addChallenge({ challenge: newChallenge }));
+        }),
+        catchError((error) => {
+          const message = 'Adding the challenge failed!...';
+          alert(message);
+          // throw new Error(message);
+          return error.message;
+        })
+      );
   }
 }

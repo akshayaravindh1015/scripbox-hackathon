@@ -3,6 +3,7 @@ import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
 import { ChipComponent } from './components/chip/chip.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 export const components: any[] = [
   CardComponent,
@@ -10,6 +11,7 @@ export const components: any[] = [
   ButtonComponent,
   TagsInputComponent,
   ChipComponent,
+  SpinnerComponent,
 ];
 
 export const pipes: any[] = [];
@@ -24,3 +26,4 @@ export * from './components/input/input.component';
 export * from './components/button/button.component';
 export * from './components/tags-input/tags-input.component';
 export * from './components/chip/chip.component';
+export * from './components/spinner/spinner.component';

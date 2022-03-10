@@ -27,7 +27,7 @@ export class BackendService {
   }
 
   public postCall(url: string, body: any): Observable<any> {
-    return this.http.post(`${url}.json`, body, {
+    return this.http.post(`${url}.jso`, body, {
       headers: this.getHeaders(),
       observe: 'body',
       responseType: 'json',
