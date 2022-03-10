@@ -2,15 +2,32 @@
   <div class="container" *ngIf="state$ | async as state">
     <div class="details">
       <h2 class="title">
-        {{ state.title }} <fa-icon class="bookmark" [icon]="bookMark"></fa-icon>
+        {{ state.title }}
+        <fa-icon
+          *ngIf="isLoggedIn$ | async"
+          class="bookmark"
+          [class.marked]="isBookMarked"
+          [icon]="bookMark"
+          (click)="bookmarkChallenge()"
+        ></fa-icon>
       </h2>
       <div class="chips-container">
         <cust-chip *ngFor="let tag of state.tags">{{ tag }}</cust-chip>
       </div>
     </div>
-    <div class="actions">
-      <fa-icon class="vote-button" [icon]="upVote"></fa-icon>
-      <fa-icon class="vote-button" [icon]="downVote"></fa-icon>
+    <div class="actions" *ngIf="isLoggedIn$ | async">
+      <fa-icon
+        class="vote-button"
+        [class.up]="isUpVoted"
+        [icon]="upVote"
+        (click)="upVoteChallenge()"
+      ></fa-icon>
+      <fa-icon
+        class="vote-button"
+        [class.down]="isDownVoted"
+        [icon]="downVote"
+        (click)="downVoteChallenge()"
+      ></fa-icon>
     </div>
   </div>
 </card>

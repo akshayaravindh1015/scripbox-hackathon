@@ -46,7 +46,7 @@ export class AddChallengeService {
     empId: string,
     empChallenges: string[]
   ): Observable<any> {
-    const EMP_CHALLENGES_POINT = `${environment.api.endpoints.employees}/${empId}/empData/myChallenges`;
+    const EMP_CHALLENGES_POINT = `${environment.api.endpoints.employees}/${empId}/myChallenges`;
     return this._backendServc.putCall(EMP_CHALLENGES_POINT, empChallenges).pipe(
       map(() => {}),
       catchError((error) => {

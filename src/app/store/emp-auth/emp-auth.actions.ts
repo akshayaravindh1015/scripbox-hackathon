@@ -1,15 +1,10 @@
 import { createAction, props } from '@ngrx/store';
+import { EmpData } from '@shared/models';
 
 export const login = createAction(
   '[Emp-Auth] Login',
   props<{
-    empData: {
-      empId: string;
-      myChallenges: string[];
-      votedChallenges: string[];
-      bookMarkedChallenges: string[];
-      downVotedChllenges: string[];
-    };
+    empData: EmpData;
   }>()
 );
 

@@ -33,15 +33,15 @@ export class AuthService {
         };
         this._backendServc.putCall(EMP_END_POINT, empData).subscribe(
           (data) => {
-            this.store.dispatch(login({ empData }));
+            this.store.dispatch(login({ empData: empData }));
             // this.router.navigate(['/challenges/list']);
-            this.router.navigate(['/employee/challenges']);
+            this.router.navigate(['/challenges/list']);
           },
           (error) => {}
         );
       } else {
         // this.router.navigate(['/challenges/list']);
-        this.router.navigate(['/employee/challenges']);
+        this.router.navigate(['/challenges/list']);
       }
     });
   }

@@ -2,7 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { AppState } from '.';
 
 //Auth
-export const isLoggedIn = (state: AppState) => state.empAuth.isLoggedIn;
+export const isLoggedIn$ = (state: AppState) => state.empAuth.isLoggedIn;
 
 //Employee Details
 export const empData$ = (state: AppState) => state.empAuth.empData;
@@ -20,4 +20,14 @@ export const myChallengesIds$ = createSelector(
 export const challenge$ = (id: string) =>
   createSelector(challenegsList$, (challenges) =>
     challenges.find((el) => el.id == id)
+  );
+export const isChallengeUpVoted$ = (id: string) =>
+  createSelector(empData$, (empData) => empData.votedChallenges.includes(id));
+export const isChallengeDownVoted$ = (id: string) =>
+  createSelector(empData$, (empData) =>
+    empData.downVotedChllenges.includes(id)
+  );
+export const isChallengeBookMarked$ = (id: string) =>
+  createSelector(empData$, (empData) =>
+    empData.bookMarkedChallenges.includes(id)
   );

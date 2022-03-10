@@ -13,9 +13,9 @@ import {
 export const empAuthFeatureKey = 'emp-auth';
 
 export const initialEmpAuthState: Employee_Auth = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   empData: {
-    empId: '12345',
+    empId: '',
     myChallenges: [],
     votedChallenges: [],
     bookMarkedChallenges: [],

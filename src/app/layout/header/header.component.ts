@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { ThemeService } from '@layout/services/theme.service';
-import { AppState, isLoggedIn } from '@store/index';
+import { AppState, isLoggedIn$ } from '@store/index';
 import { AuthService } from '@core/index';
 
 @Component({
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     private _authServc: AuthService
   ) {}
 
-  isLoggedIn$ = this.store.select(isLoggedIn);
+  isLoggedIn$ = this.store.select(isLoggedIn$);
   ngOnInit(): void {
     this._themeServc.setDarkTheme();
   }
