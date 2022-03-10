@@ -20,5 +20,8 @@
 >
 
 <jw-modal id="add-a-new-challenge-container" size="max">
-  <new-challenge [closeFn]="onCancelAddingNewChallenge"></new-challenge>
+  <new-challenge
+    *ngIf="showNewOpenModal"
+    [closeFn]="onCancelAddingNewChallenge"
+  ></new-challenge>
 </jw-modal>

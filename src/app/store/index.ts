@@ -8,14 +8,17 @@ import {
 
 import { authReducer } from './auth';
 import { Auth } from '@shared/models';
+import { challengeReducer, ChallengesState } from './challenges';
 import { environment } from '../../environments/environment';
 
 export interface AppState {
   auth: Auth;
+  challenges: ChallengesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
+  challenges: challengeReducer,
 };
 
 export * from './global.selectors';

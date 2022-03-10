@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AppState, empIdSelector } from '@store/index';
+import { AppState, empId$ } from '@store/index';
 
 @Component({
   selector: 'app-account-info',
@@ -10,7 +10,7 @@ import { AppState, empIdSelector } from '@store/index';
   styleUrls: ['./account-info.component.scss'],
 })
 export class AccountInfoComponent implements OnInit {
-  empId$: Observable<string> = this.store.select(empIdSelector);
+  empId$: Observable<string> = this.store.select(empId$);
   empId: string = '';
 
   constructor(private store: Store<AppState>) {
@@ -18,6 +18,6 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(empIdSelector).subscribe((id) => (this.empId = id));
+    this.store.select(empId$).subscribe((id) => (this.empId = id));
   }
 }

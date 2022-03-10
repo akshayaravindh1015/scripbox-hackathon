@@ -36,17 +36,8 @@ export class NewChallengeComponent implements OnInit {
 
   cancelAddingNewChallenge() {
     this.closeFn();
-    this.resetForm();
   }
   submitTheIdea() {
-    console.log(this.tagsController.value);
-    this.resetForm();
     this.closeFn();
-  }
-
-  resetForm() {
-    // this.titleController.reset();
-    // this.descController.reset();
-    // this.tagsController.reset();
   }
 }
