@@ -33,8 +33,8 @@ export class GetChallengesResolver implements Resolve<Challenge[]> {
       map((result) => {
         const challenges: Challenge[] = Object.keys(result).map((key: string) =>
           challengeFromFactory({
-            id: key,
             ...result[key],
+            id: key,
           })
         );
         this.store.dispatch(loadChallenges({ challenges }));

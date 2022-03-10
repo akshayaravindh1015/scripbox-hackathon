@@ -1,11 +1,13 @@
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { MyChallengesComponent } from './my-challenges/my-challenges.component';
+import { NewChallengeComponent } from './components/new-challenge/new-challenge.component';
 import { EmployeeComponent } from './employee.component';
 
 export const components: any[] = [
   AccountInfoComponent,
   MyChallengesComponent,
   EmployeeComponent,
+  NewChallengeComponent,
 ];
 
 export const pipes: any[] = [];
@@ -17,4 +19,5 @@ export const directives: any[] = [];
 
 export * from './account-info/account-info.component';
 export * from './my-challenges/my-challenges.component';
+export * from './components/new-challenge/new-challenge.component';
 export * from './employee.component';

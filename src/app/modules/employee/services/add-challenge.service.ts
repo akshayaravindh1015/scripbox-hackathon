@@ -20,6 +20,7 @@ export class AddChallengeService {
   ) {}
 
   addANewChallenge(challengePayload: Challenge): Observable<any> {
+    let payload = { ...challengePayload };
     return this._backendServc
       .postCall(CHALLENGES_ENDPIONT, {
         ...challengePayload,
@@ -28,7 +29,7 @@ export class AddChallengeService {
       .pipe(
         map((result) => {
           const newChallenge = challengeFromFactory({
-            ...challengePayload,
+            ...payload,
             id: result.name,
           });
           this.store.dispatch(addChallenge({ challenge: newChallenge }));

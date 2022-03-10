@@ -4,6 +4,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
 import { ChipComponent } from './components/chip/chip.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ChallengeCardComponent } from './components/challenge-card/challenge-card.component';
 
 export const components: any[] = [
   CardComponent,
@@ -12,6 +13,7 @@ export const components: any[] = [
   TagsInputComponent,
   ChipComponent,
   SpinnerComponent,
+  ChallengeCardComponent,
 ];
 
 export const pipes: any[] = [];
@@ -27,3 +29,4 @@ export * from './components/button/button.component';
 export * from './components/tags-input/tags-input.component';
 export * from './components/chip/chip.component';
 export * from './components/spinner/spinner.component';
+export * from './components/challenge-card/challenge-card.component';
