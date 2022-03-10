@@ -47,8 +47,8 @@ export class NewChallengeComponent implements OnInit {
         title: this.titleController.value,
         desc: this.descController.value,
         tags: this.tagsController.value,
-        upvotes: 0,
-        downvotes: 0,
+        upvotes: [],
+        downvotes: [],
         comments: [],
       })
       .subscribe(

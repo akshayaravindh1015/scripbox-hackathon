@@ -3,8 +3,8 @@ export type Challenge = {
   title: string;
   tags: string[];
   desc: string;
-  upvotes: number;
-  downvotes: number;
+  upvotes: string[];
+  downvotes: string[];
   comments: string[];
 };
 export const challengeFromFactory = (factory: any): Challenge => {

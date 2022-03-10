@@ -11,6 +11,7 @@ import {
   AccountInfoComponent,
 } from '@employee/index';
 import { ChallengesComponent } from '@challenges/challenges.component';
+import { GetChallengesResolver } from '@challenges/services/get-challenges.resolver';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       {
         path: 'list',
         component: ChallengesListComponent,
+        resolve: { challenges: GetChallengesResolver },
       },
       {
         path: ':id',
