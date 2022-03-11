@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Challenge } from '@shared/models';
+import { Challenge, Comment } from '@shared/models';
 
 export const loadChallenges = createAction(
   '[Challenges] Load Challengess',
@@ -19,6 +19,11 @@ export const addUpVotedUser = createAction(
 export const addDownVotedUser = createAction(
   '[Challenges] Add DownVoted User',
   props<{ challengeId: string; empId: string }>()
+);
+
+export const addComment = createAction(
+  '[Challenges] Add Comments to challenge',
+  props<{ challengeId: string; comment: Comment }>()
 );
 
 export const resetChallenges = createAction('[Challenges] Reset Challenges');

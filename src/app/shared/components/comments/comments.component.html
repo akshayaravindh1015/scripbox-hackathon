@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class="title">Comments:</h2>
+  <cust-input
+    [label]="'Your Comment'"
+    [props]="{ type: 'textarea', id: 'new-comment' }"
+    (onLoad)="captureCommentController($event)"
+  ></cust-input>
+  <div class="actions">
+    <cust-button (click)="addComment()">Add Comment</cust-button>
+  </div>
+  <ul class="comments">
+    <li *ngFor="let comment of comments">
+      <p>{{ comment.addedBy }} : {{ comment.commentText }}</p>
+    </li>
+  </ul>
+</div>

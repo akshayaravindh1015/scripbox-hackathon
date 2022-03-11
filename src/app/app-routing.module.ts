@@ -37,6 +37,7 @@ const routes: Routes = [
       {
         path: ':id',
         component: ChallengeInfoComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },

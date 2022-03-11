@@ -5,6 +5,7 @@ import { ChipComponent } from './UI/chip/chip.component';
 import { SpinnerComponent } from './UI/spinner/spinner.component';
 import { ButtonComponent } from './UI/button/button.component';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { CommentsComponent } from './components/comments/comments.component';
 import { NewChallengeComponent } from './components/new-challenge/new-challenge.component';
 import { ChallengeCardComponent } from './components/challenge-card/challenge-card.component';
 
@@ -18,6 +19,7 @@ export const components: any[] = [
   ChallengeCardComponent,
   NewChallengeComponent,
   TooltipDirective,
+  CommentsComponent,
 ];
 
 export const pipes: any[] = [];

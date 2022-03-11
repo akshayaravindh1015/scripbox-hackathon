@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '@env';
 import { BackendService } from '@shared/services/backend.service';
+import { Comment } from '@shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,21 @@ export class ModifyChallengeService {
     );
   }
 
+  addComments(challengeId: string, commentObj: Comment): Observable<any> {
+    const CHALLENGE_COMMENTS_ENDPOINT = `${environment.api.endpoints.challenges}/${challengeId}/comments`;
+
+    return this._backendServc
+      .postCall(CHALLENGE_COMMENTS_ENDPOINT, commentObj)
+      .pipe(
+        map(() => {}),
+        catchError((error) => {
+          const message = 'Adding Comments failed!...';
+          alert(message + '\n' + error.message);
+          throw new Error(message);
+          // return error.message;
+        })
+      );
+  }
   // updateChallengeVotes(
   //   challengeId: string,
   //   upVotes: string[],

@@ -1,1 +1,41 @@
-<p>challenge-info works!</p>
+<card>
+  <div class="flex-col">
+    <div class="container" *ngIf="state$ | async as state">
+      <div class="details">
+        <h2 class="title">
+          {{ state.title }}
+          <fa-icon
+            *ngIf="isLoggedIn$ | async"
+            class="bookmark"
+            [class.marked]="isBookMarked"
+            [icon]="bookMark"
+            (click)="bookmarkChallenge()"
+          ></fa-icon>
+        </h2>
+        <div class="chips-container">
+          <cust-chip *ngFor="let tag of state.tags">{{ tag }}</cust-chip>
+          <span class="date">
+            {{ state.createdAt.toDateString() }}
+          </span>
+        </div>
+      </div>
+      <div class="actions" *ngIf="isLoggedIn$ | async">
+        <fa-icon
+          class="vote-button"
+          [class.up]="isUpVoted"
+          [icon]="upVote"
+          (click)="upVoteChallenge()"
+        ></fa-icon>
+        <span class="count">{{ state.upVotesCount }}</span>
+        <fa-icon
+          class="vote-button"
+          [class.down]="isDownVoted"
+          [icon]="downVote"
+          (click)="downVoteChallenge()"
+        ></fa-icon>
+        <span class="count">{{ state.downVotesCount }}</span>
+      </div>
+    </div>
+    <cust-comments [challengeId]="challengeId"></cust-comments>
+  </div>
+</card>

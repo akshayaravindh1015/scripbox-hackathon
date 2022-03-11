@@ -14,8 +14,11 @@
 <br />
 <ul>
   <ng-container *ngIf="challenges.length > 0; else noChallanges">
-    <li *ngFor="let challenge of challenges">
-      <challenge-card [challengeId]="challenge.id"></challenge-card>
+    <li *ngFor="let challenge of challenges" [tooltip]="'Double click to open'">
+      <challenge-card
+        [challengeId]="challenge.id"
+        (dblclick)="openChallenge(challenge.id)"
+      ></challenge-card>
     </li>
   </ng-container>
   <ng-template #noChallanges>

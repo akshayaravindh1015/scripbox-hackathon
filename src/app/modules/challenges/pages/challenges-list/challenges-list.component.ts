@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Challenge } from '@shared/models';
 
@@ -15,7 +16,7 @@ export class ChallengesListComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   sortFun = (c1: Challenge, c2: Challenge) => c2.upVotesCount - c1.upVotesCount;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.store
@@ -46,6 +47,10 @@ export class ChallengesListComponent implements OnInit, OnDestroy {
         break;
     }
     this.setSortedChallenges(this.challenges);
+  }
+
+  openChallenge(challengeId: string) {
+    this.router.navigate([`challenges/${challengeId}`]);
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

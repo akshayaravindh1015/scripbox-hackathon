@@ -1,10 +1,14 @@
+export type Comment = {
+  commentText: string;
+  addedBy: string;
+};
 export type Challenge = {
   id: string;
   empId: string;
   title: string;
   tags: string[];
   desc: string;
-  comments: string[];
+  comments: Comment[];
   createdAt: Date;
   upVotedBy: string[];
   upVotesCount: number;
@@ -32,7 +36,7 @@ export const challengeFromFactory = (factory: any): Challenge => {
       typeof factory['tags'] === 'string'
         ? JSON.parse(factory['tags'])
         : factory['tags'],
-    comments: factory['comments'] || [],
+    comments: !!factory['comments'] ? Object.values(factory['comments']) : [],
     createdAt: new Date(factory['createdAt']),
     upVotedBy: upVotedBy,
     upVotesCount: upVotedBy.length,

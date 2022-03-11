@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 20px 0 20px;
+  .title {
+    margin: 0;
+    color: var(--foreground-default);
+    text-align: left;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .actions {
+    display: flex;
+    flex-direction: row-reverse;
+    cust-button {
+      &:not(:last-child) {
+        margin-left: 20px;
+      }
+    }
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+  }
+  .comments {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 10px;
+      margin: 0;
+      margin-bottom: 15px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

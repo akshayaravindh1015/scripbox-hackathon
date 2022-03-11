@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Challenge } from '@shared/models';
 import {
   addChallenge,
+  addComment,
   addDownVotedUser,
   addUpVotedUser,
   loadChallenges,
@@ -61,6 +62,23 @@ export const challengeReducer = createReducer(
     );
     newChallenge.upVotesCount = newChallenge.upVotedBy.length;
     newChallenge.downVotesCount = newChallenge.downVotedBy.length;
+
+    return {
+      ...state,
+      challenges: state.challenges.map((challenge, index) => {
+        if (index === challIndex) {
+          return newChallenge;
+        }
+        return challenge;
+      }),
+    };
+  }),
+  on(addComment, (state, action) => {
+    const challIndex = state.challenges.findIndex(
+      (el) => el.id == action.challengeId
+    );
+    const newChallenge: Challenge = { ...state.challenges[challIndex] };
+    newChallenge.comments = [...newChallenge.comments, action.comment];
 
     return {
       ...state,
