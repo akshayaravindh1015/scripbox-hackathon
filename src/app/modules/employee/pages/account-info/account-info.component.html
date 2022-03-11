@@ -2,8 +2,33 @@
 <hr />
 <br />
 <card>
-  <div class="details">
-    <h3>EmployeeId: <span id="employee-id" [innerHTML]="empId"></span></h3>
-    <p>Other Details here</p>
+  <div class="details" *ngIf="empData$ | async as empData">
+    <h3>
+      EmployeeId: <span id="employee-id">{{ empData.empId }}</span>
+    </h3>
+    <hr />
+    <br />
+    <ul class="my-links">
+      <li>
+        <a routerLink="/employee/challenges"
+          >My Challenges ({{ empData.myChallenges.length }})</a
+        >
+      </li>
+      <li>
+        <a routerLink="/employee/challenges"
+          >My BookMarks ({{ empData.bookMarkedChallenges.length }})</a
+        >
+      </li>
+      <li>
+        <a routerLink="/employee/challenges"
+          >My Up Voted ({{ empData.votedChallenges.length }})</a
+        >
+      </li>
+      <li>
+        <a routerLink="/employee/challenges"
+          >My Down Up Voted ({{ empData.downVotedChllenges.length }})</a
+        >
+      </li>
+    </ul>
   </div>
 </card>
