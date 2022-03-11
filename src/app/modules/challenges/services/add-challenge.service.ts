@@ -24,7 +24,7 @@ export class AddChallengeService {
     return this._backendServc
       .postCall(CHALLENGES_ENDPIONT, {
         ...challengePayload,
-        createdAt: JSON.stringify(challengePayload.createdAt),
+        // createdAt: JSON.stringify(challengePayload.createdAt),
       })
       .pipe(
         map((result) => {

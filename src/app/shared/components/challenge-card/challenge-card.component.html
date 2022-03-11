@@ -13,6 +13,9 @@
       </h2>
       <div class="chips-container">
         <cust-chip *ngFor="let tag of state.tags">{{ tag }}</cust-chip>
+        <span class="date">
+          {{ state.createdAt.toDateString() }}
+        </span>
       </div>
     </div>
     <div class="actions" *ngIf="isLoggedIn$ | async">
