@@ -4,6 +4,7 @@ import { TagsInputComponent } from './UI/tags-input/tags-input.component';
 import { ChipComponent } from './UI/chip/chip.component';
 import { SpinnerComponent } from './UI/spinner/spinner.component';
 import { ButtonComponent } from './UI/button/button.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 import { NewChallengeComponent } from './components/new-challenge/new-challenge.component';
 import { ChallengeCardComponent } from './components/challenge-card/challenge-card.component';
 
@@ -16,6 +17,7 @@ export const components: any[] = [
   SpinnerComponent,
   ChallengeCardComponent,
   NewChallengeComponent,
+  TooltipDirective,
 ];
 
 export const pipes: any[] = [];
@@ -31,5 +33,6 @@ export * from './UI/tags-input/tags-input.component';
 export * from './UI/chip/chip.component';
 export * from './UI/spinner/spinner.component';
 export * from './UI/button/button.component';
+export * from './directives/tooltip.directive';
 export * from './components/challenge-card/challenge-card.component';
 export * from './components/new-challenge/new-challenge.component';
