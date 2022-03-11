@@ -1,0 +1,59 @@
+<h2>About the app</h2>
+<hr />
+<br />
+<card>
+  <div class="details">
+    <h2>App Resources</h2>
+    <hr />
+    <div class="flex-row">
+      <ul class="my-links">
+        <li>
+          <a
+            href="https://vaulted-dianella-6a1.notion.site/ScripBox-Hackathon-aef06a7493b24b4d831db72af1fd4b20"
+            target="_blank"
+            >Notion - App Planning and dashboard</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/akshayaravindh1015/scripbox-hackathon"
+            target="_blank"
+            >GitHub Link</a
+          >
+        </li>
+      </ul>
+      <ul class="my-links">
+        <li>
+          <a
+            href="https://console.firebase.google.com/project/data-upload-6bc54/database/data-upload-6bc54-default-rtdb/data"
+            target="_blank"
+            >FireBase Data Base</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://bitbucket.org/akshayaravindh1015/scripbox-hackathon/src"
+            target="_blank"
+            >BitBucket Reposirtoy</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</card>
+<br />
+<br />
+<card>
+  <div class="details features">
+    <h2>App Fetures</h2>
+    <hr />
+    <div class="flex-row">
+      <ul class="my-links">
+        <li *ngFor="let feature of features; let i = index">
+          <p>{{ i + 1 }}. {{ feature }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</card>
+<br /><br />

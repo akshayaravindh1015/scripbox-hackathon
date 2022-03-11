@@ -7,6 +7,7 @@ import {
   EmployeeComponent,
   MyChallengesComponent,
   AccountInfoComponent,
+  AboutAppComponent,
 } from '@employee/index';
 import {
   GetChallengesResolver,
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'about-app',
+    component: AboutAppComponent,
   },
   {
     path: 'challenges',
