@@ -2,6 +2,19 @@
   color: var(--foreground-secondary);
   width: 100%;
 }
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  .title {
+    margin-top: 0;
+    text-align: left;
+  }
+  #sort-select {
+    outline: none;
+    border-radius: 4px;
+    padding: 3px 5px;
+  }
+}
 ul {
   list-style: none;
   padding: 0;
@@ -13,10 +26,6 @@ ul {
       margin-bottom: 20px;
     }
   }
-}
-.title {
-  margin-top: 0;
-  text-align: left;
 }
 h3 {
   text-align: center;

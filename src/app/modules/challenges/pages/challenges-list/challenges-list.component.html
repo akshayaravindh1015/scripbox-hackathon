@@ -1,4 +1,15 @@
-<h2 class="title">All Challenges</h2>
+<div class="top-container">
+  <h2 class="title">All Challenges</h2>
+  <div class="sort-cont">
+    <label for="sortSelect">Sort by: </label>
+    <select name="sortSelect" id="sort-select" (input)="changeSortFun($event)">
+      <option value="votesDesc" selected>By Votes</option>
+      <option value="votesAsc">By Votes ascending</option>
+      <option value="dateAsc">Older</option>
+      <option value="dateDesc">New</option>
+    </select>
+  </div>
+</div>
 <hr />
 <br />
 <ul>
