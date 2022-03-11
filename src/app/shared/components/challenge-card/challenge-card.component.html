@@ -22,12 +22,14 @@
         [icon]="upVote"
         (click)="upVoteChallenge()"
       ></fa-icon>
+      <span class="count">{{ state.upVotesCount }}</span>
       <fa-icon
         class="vote-button"
         [class.down]="isDownVoted"
         [icon]="downVote"
         (click)="downVoteChallenge()"
       ></fa-icon>
+      <span class="count">{{ state.downVotesCount }}</span>
     </div>
   </div>
 </card>

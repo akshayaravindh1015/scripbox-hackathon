@@ -55,15 +55,11 @@ export class NewChallengeComponent implements OnInit {
     this.isLoading = true;
     this._addChallengeServc
       .addANewChallenge({
-        id: '',
         empId: this.empId,
         title: this.titleController.value,
         desc: this.descController.value,
         tags: this.tagsController.value,
-        comments: [],
         createdAt: new Date(),
-        upVotedBy: [],
-        downVotedBy: [],
       })
       .subscribe(
         () => {

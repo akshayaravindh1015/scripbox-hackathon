@@ -19,7 +19,7 @@ export class AddChallengeService {
     private store: Store<AppState>
   ) {}
 
-  addANewChallenge(challengePayload: Challenge): Observable<any> {
+  addANewChallenge(challengePayload: Partial<Challenge>): Observable<any> {
     let payload = { ...challengePayload };
     return this._backendServc
       .postCall(CHALLENGES_ENDPIONT, {

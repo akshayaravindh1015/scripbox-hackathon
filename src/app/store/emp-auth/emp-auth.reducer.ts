@@ -7,7 +7,7 @@ import {
   addToMyCreatedChallenges,
   downVoteChallenge,
   upVoteChallenge,
-  removeFromMyBookMarkedChallenges,
+  unBookMarkChallenge,
 } from './emp-auth.actions';
 
 export const empAuthFeatureKey = 'emp-auth';
@@ -65,15 +65,18 @@ export const empAuthReducer = createReducer(
     ...state,
     empData: {
       ...state.empData,
-      bookMarkedChallenges: [...state.empData.bookMarkedChallenges, action.id],
+      bookMarkedChallenges: [
+        ...state.empData.bookMarkedChallenges,
+        action.challengeId,
+      ],
     },
   })),
-  on(removeFromMyBookMarkedChallenges, (state, action) => ({
+  on(unBookMarkChallenge, (state, action) => ({
     ...state,
     empData: {
       ...state.empData,
       bookMarkedChallenges: state.empData.bookMarkedChallenges.filter(
-        (id) => id != action.id
+        (challengeId) => challengeId !== action.challengeId
       ),
     },
   }))

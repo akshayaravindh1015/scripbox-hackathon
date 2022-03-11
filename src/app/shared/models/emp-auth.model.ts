@@ -13,6 +13,9 @@ export type Employee_Auth = {
 export const empDataFromFactory = (factory: any): EmpData => {
   const votedChallenges = [];
   const downVotedChllenges = [];
+  const bookMarkedChallenges = Object.keys(
+    factory['bookMarkedChallenges'] || {}
+  );
 
   for (const challengeId in factory['votedChallenges']) {
     if (factory['votedChallenges'][challengeId]) {
@@ -27,6 +30,6 @@ export const empDataFromFactory = (factory: any): EmpData => {
     myChallenges: factory['myChallenges'] || [],
     votedChallenges: votedChallenges,
     downVotedChllenges: downVotedChllenges,
-    bookMarkedChallenges: factory['bookMarkedChallenges'] || [],
+    bookMarkedChallenges: bookMarkedChallenges,
   };
 };

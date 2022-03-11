@@ -42,22 +42,24 @@ export class ModifyEmpDataService {
     );
   }
 
-  updateEmployeeBookMarks(
+  addRemoveBookMark(
     empId: string,
-    empBookmarkedChallenges: string[]
+    challengeId: string,
+    saveBookMark: boolean
   ): Observable<any> {
-    const EMP_BOOKMARKS_POINT = `${environment.api.endpoints.employees}/${empId}/bookMarkedChallenges`;
-    return this._backendServc
-      .putCall(EMP_BOOKMARKS_POINT, empBookmarkedChallenges)
-      .pipe(
-        map(() => {}),
-        catchError((error) => {
-          const message =
-            'Adding the challenge id to my bookmarked challenges failed!...';
-          alert(message + '\n' + error.message);
-          throw new Error(message);
-          // return error.message;
-        })
-      );
+    const EMP_BOOKMARKS_POINT = `${environment.api.endpoints.employees}/${empId}/bookMarkedChallenges/${challengeId}`;
+    let bookMark$ = this._backendServc.putCall(EMP_BOOKMARKS_POINT, true);
+    if (saveBookMark == false) {
+      bookMark$ = this._backendServc.deleteCall(EMP_BOOKMARKS_POINT);
+    }
+    return bookMark$.pipe(
+      map(() => {}),
+      catchError((error) => {
+        const message = 'Updating Book marks failed!...';
+        alert(message + '\n' + error.message);
+        throw new Error(message);
+        // return error.message;
+      })
+    );
   }
 }

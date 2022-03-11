@@ -41,4 +41,12 @@ export class BackendService {
       responseType: 'json',
     });
   }
+
+  public deleteCall(url: string): Observable<any> {
+    return this.http.delete(`${url}.json`, {
+      headers: this.getHeaders(),
+      observe: 'body',
+      responseType: 'json',
+    });
+  }
 }

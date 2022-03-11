@@ -7,7 +7,9 @@ export type Challenge = {
   comments: string[];
   createdAt: Date;
   upVotedBy: string[];
+  upVotesCount: number;
   downVotedBy: string[];
+  downVotesCount: number;
 };
 export const challengeFromFactory = (factory: any): Challenge => {
   const upVotedBy = [];
@@ -32,7 +34,9 @@ export const challengeFromFactory = (factory: any): Challenge => {
         : factory['tags'],
     comments: factory['comments'] || [],
     createdAt: new Date(factory['createdAt']),
-    upVotedBy: upVotedBy || [],
-    downVotedBy: downVotedBy || [],
+    upVotedBy: upVotedBy,
+    upVotesCount: upVotedBy.length,
+    downVotedBy: downVotedBy,
+    downVotesCount: downVotedBy.length,
   };
 };

@@ -24,9 +24,9 @@ export const downVoteChallenge = createAction(
 );
 export const bookMarkChallenge = createAction(
   '[Emp-Auth] Add To My BookMarked Challenged',
-  props<{ id: string }>()
+  props<{ challengeId: string }>()
 );
-export const removeFromMyBookMarkedChallenges = createAction(
-  '[Emp-Auth] Add To My BookMarked Challenged',
-  props<{ id: string }>()
+export const unBookMarkChallenge = createAction(
+  '[Emp-Auth] Remove From My BookMarked Challenged',
+  props<{ challengeId: string }>()
 );

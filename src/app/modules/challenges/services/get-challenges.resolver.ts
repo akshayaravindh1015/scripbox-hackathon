@@ -31,14 +31,19 @@ export class GetChallengesResolver implements Resolve<Challenge[]> {
   ): Observable<Challenge[]> {
     return this._backendServc.getCall(CHALLENGES_ENDPIONT).pipe(
       map((result) => {
-        const challenges: Challenge[] = Object.keys(result).map((key: string) =>
-          challengeFromFactory({
-            ...result[key],
-            id: key,
-          })
-        );
-        this.store.dispatch(loadChallenges({ challenges }));
-        return challenges;
+        if (!!result) {
+          const challenges: Challenge[] = Object.keys(result).map(
+            (key: string) =>
+              challengeFromFactory({
+                ...result[key],
+                id: key,
+              })
+          );
+          this.store.dispatch(loadChallenges({ challenges }));
+          return challenges;
+        } else {
+          return [];
+        }
       }),
       catchError((error: any) => {
         alert('Failed to fetch the challenges list: \n' + error.message);

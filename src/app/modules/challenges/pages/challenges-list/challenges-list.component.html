@@ -1,8 +1,13 @@
-<h2>All Challenges</h2>
+<h2 class="title">All Challenges</h2>
 <hr />
 <br />
 <ul>
-  <li *ngFor="let challenge of challenges$ | async">
-    <challenge-card [challengeId]="challenge.id"></challenge-card>
-  </li>
+  <ng-container *ngIf="challenges.length > 0; else noChallanges">
+    <li *ngFor="let challenge of challenges">
+      <challenge-card [challengeId]="challenge.id"></challenge-card>
+    </li>
+  </ng-container>
+  <ng-template #noChallanges>
+    <h3>No Challenges to Show</h3>
+  </ng-template>
 </ul>

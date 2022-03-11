@@ -1,4 +1,3 @@
-import { act } from '@ngrx/effects';
 import { createReducer, on } from '@ngrx/store';
 import { Challenge } from '@shared/models';
 import {
@@ -34,12 +33,12 @@ export const challengeReducer = createReducer(
       (el) => el.id == action.challengeId
     );
     const newChallenge: Challenge = { ...state.challenges[challIndex] };
-    newChallenge.upVotedBy.push(action.empId);
-    if (newChallenge.downVotedBy.includes(action.empId)) {
-      newChallenge.downVotedBy = newChallenge.downVotedBy.filter(
-        (el) => el == action.empId
-      );
-    }
+    newChallenge.upVotedBy = [...newChallenge.upVotedBy, action.empId];
+    newChallenge.downVotedBy = newChallenge.downVotedBy.filter(
+      (el) => el !== action.empId
+    );
+    newChallenge.upVotesCount = newChallenge.upVotedBy.length;
+    newChallenge.downVotesCount = newChallenge.downVotedBy.length;
 
     return {
       ...state,
@@ -56,12 +55,12 @@ export const challengeReducer = createReducer(
       (el) => el.id == action.challengeId
     );
     const newChallenge: Challenge = { ...state.challenges[challIndex] };
-    newChallenge.downVotedBy.push(action.empId);
-    if (newChallenge.upVotedBy.includes(action.empId)) {
-      newChallenge.upVotedBy = newChallenge.upVotedBy.filter(
-        (el) => el == action.empId
-      );
-    }
+    newChallenge.downVotedBy = [...newChallenge.downVotedBy, action.empId];
+    newChallenge.upVotedBy = newChallenge.upVotedBy.filter(
+      (el) => el !== action.empId
+    );
+    newChallenge.upVotesCount = newChallenge.upVotedBy.length;
+    newChallenge.downVotesCount = newChallenge.downVotedBy.length;
 
     return {
       ...state,

@@ -1,7 +1,6 @@
 :host {
   color: var(--foreground-secondary);
   width: 100%;
-  padding: 0 40px;
 }
 ul {
   list-style: none;
@@ -14,4 +13,11 @@ ul {
       margin-bottom: 20px;
     }
   }
+}
+.title {
+  margin-top: 0;
+  text-align: left;
+}
+h3 {
+  text-align: center;
 }

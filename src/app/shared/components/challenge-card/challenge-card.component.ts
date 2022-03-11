@@ -18,6 +18,7 @@ import { ModifyEmpDataService } from '@employee/services/modify-emp-data.service
 import {
   bookMarkChallenge,
   downVoteChallenge,
+  unBookMarkChallenge,
   upVoteChallenge,
 } from '@store/emp-auth';
 
@@ -76,16 +77,23 @@ export class ChallengeCardComponent implements OnInit, OnDestroy {
     }
   }
   bookmarkChallenge() {
-    if (!this.isBookMarked) {
-      this._modifyEmpDataServc
-        .updateEmployeeBookMarks(this.empData.empId, [
-          ...this.empData.bookMarkedChallenges,
-          this.challengeId,
-        ])
-        .subscribe(() => {
-          this.store.dispatch(bookMarkChallenge({ id: this.challengeId }));
-        });
-    }
+    this._modifyEmpDataServc
+      .addRemoveBookMark(
+        this.empData.empId,
+        this.challengeId,
+        !this.isBookMarked
+      )
+      .subscribe(() => {
+        if (this.isBookMarked) {
+          this.store.dispatch(
+            unBookMarkChallenge({ challengeId: this.challengeId })
+          );
+        } else {
+          this.store.dispatch(
+            bookMarkChallenge({ challengeId: this.challengeId })
+          );
+        }
+      });
   }
   downVoteChallenge() {
     if (!this.isDownVoted) {
