@@ -3,10 +3,10 @@ import { createReducer, on } from '@ngrx/store';
 import { Employee_Auth } from '@shared/models';
 import { login, logOut } from '.';
 import {
-  addToMyBookMarkedChallenges,
+  bookMarkChallenge,
   addToMyCreatedChallenges,
-  addToMyDownVotedChallenges,
-  addToMyUpVotedChallenges,
+  downVoteChallenge,
+  upVoteChallenge,
   removeFromMyBookMarkedChallenges,
 } from './emp-auth.actions';
 
@@ -38,27 +38,30 @@ export const empAuthReducer = createReducer(
       myChallenges: [...state.empData.myChallenges, action.id],
     },
   })),
-  on(addToMyUpVotedChallenges, (state, action) => ({
+  on(upVoteChallenge, (state, action) => ({
     ...state,
     empData: {
       ...state.empData,
-      votedChallenges: [...state.empData.votedChallenges, action.id],
+      votedChallenges: [...state.empData.votedChallenges, action.challengeId],
       downVotedChllenges: state.empData.downVotedChllenges.filter(
-        (id) => id != action.id
+        (id) => id != action.challengeId
       ),
     },
   })),
-  on(addToMyDownVotedChallenges, (state, action) => ({
+  on(downVoteChallenge, (state, action) => ({
     ...state,
     empData: {
       ...state.empData,
-      downVotedChllenges: [...state.empData.downVotedChllenges, action.id],
+      downVotedChllenges: [
+        ...state.empData.downVotedChllenges,
+        action.challengeId,
+      ],
       votedChallenges: state.empData.votedChallenges.filter(
-        (id) => id != action.id
+        (id) => id != action.challengeId
       ),
     },
   })),
-  on(addToMyBookMarkedChallenges, (state, action) => ({
+  on(bookMarkChallenge, (state, action) => ({
     ...state,
     empData: {
       ...state.empData,

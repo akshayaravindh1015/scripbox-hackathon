@@ -60,10 +60,10 @@ export class NewChallengeComponent implements OnInit {
         title: this.titleController.value,
         desc: this.descController.value,
         tags: this.tagsController.value,
-        upvotes: [],
-        downvotes: [],
         comments: [],
         createdAt: new Date(),
+        upVotedBy: [],
+        downVotedBy: [],
       })
       .subscribe(
         () => {

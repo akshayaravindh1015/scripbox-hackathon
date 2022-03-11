@@ -8,7 +8,7 @@ import { AppState } from '@store/index';
 import { login, logOut } from '@store/emp-auth';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { EmpData } from '@shared/models';
+import { EmpData, empDataFromFactory } from '@shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -24,16 +24,11 @@ export class AuthService {
     const EMP_END_POINT = `${environment.api.endpoints.employees}/${empId}`;
     this.checkIfNewUserElsePopulate(empId).subscribe((isNewUser) => {
       if (isNewUser) {
-        const empData: EmpData = {
-          empId: empId,
-          myChallenges: [],
-          votedChallenges: [],
-          bookMarkedChallenges: [],
-          downVotedChllenges: [],
-        };
-        this._backendServc.putCall(EMP_END_POINT, empData).subscribe(
-          (data) => {
-            this.store.dispatch(login({ empData: empData }));
+        this._backendServc.putCall(EMP_END_POINT, { empId: empId }).subscribe(
+          () => {
+            this.store.dispatch(
+              login({ empData: empDataFromFactory({ empId: empId }) })
+            );
             // this.router.navigate(['/challenges/list']);
             this.router.navigate(['/challenges/list']);
           },
@@ -53,7 +48,7 @@ export class AuthService {
         if (!!data) {
           this.store.dispatch(
             login({
-              empData: data,
+              empData: empDataFromFactory(data),
             })
           );
           return false;

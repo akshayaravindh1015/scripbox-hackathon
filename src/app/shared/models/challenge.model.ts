@@ -4,12 +4,23 @@ export type Challenge = {
   title: string;
   tags: string[];
   desc: string;
-  upvotes: string[];
-  downvotes: string[];
   comments: string[];
   createdAt: Date;
+  upVotedBy: string[];
+  downVotedBy: string[];
 };
 export const challengeFromFactory = (factory: any): Challenge => {
+  const upVotedBy = [];
+  const downVotedBy = [];
+
+  for (const empId in factory['votes']) {
+    if (factory['votes'][empId]) {
+      upVotedBy.push(empId);
+    } else {
+      downVotedBy.push(empId);
+    }
+  }
+
   return {
     id: factory['id'],
     empId: factory['empId'],
@@ -19,9 +30,9 @@ export const challengeFromFactory = (factory: any): Challenge => {
       typeof factory['tags'] === 'string'
         ? JSON.parse(factory['tags'])
         : factory['tags'],
-    upvotes: factory['upvotes'],
-    downvotes: factory['downvotes'],
-    comments: factory['comments'],
+    comments: factory['comments'] || [],
     createdAt: new Date(factory['createdAt']),
+    upVotedBy: upVotedBy || [],
+    downVotedBy: downVotedBy || [],
   };
 };

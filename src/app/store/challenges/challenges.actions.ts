@@ -11,4 +11,14 @@ export const addChallenge = createAction(
   props<{ challenge: Challenge }>()
 );
 
+export const addUpVotedUser = createAction(
+  '[Challenges] Add Voted User',
+  props<{ challengeId: string; empId: string }>()
+);
+
+export const addDownVotedUser = createAction(
+  '[Challenges] Add DownVoted User',
+  props<{ challengeId: string; empId: string }>()
+);
+
 export const resetChallenges = createAction('[Challenges] Reset Challenges');

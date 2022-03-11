@@ -18,9 +18,10 @@ export const myChallengesIds$ = createSelector(
   }
 );
 export const challenge$ = (id: string) =>
-  createSelector(challenegsList$, (challenges) =>
-    challenges.find((el) => el.id == id)
-  );
+  createSelector(challenegsList$, (challenges) => {
+    const index = challenges.findIndex((el) => el.id == id);
+    return challenges[index];
+  });
 export const isChallengeUpVoted$ = (id: string) =>
   createSelector(empData$, (empData) => empData.votedChallenges.includes(id));
 export const isChallengeDownVoted$ = (id: string) =>

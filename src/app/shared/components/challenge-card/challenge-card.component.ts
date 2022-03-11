@@ -14,11 +14,11 @@ import {
 
 import { Challenge, EmpData } from '@shared/models';
 import { AppState, challenge$, isLoggedIn$, empData$ } from '@store/index';
-import { ModifyChallengeService } from '@challenges/services/modify-challenge.service';
+import { ModifyEmpDataService } from '@employee/services/modify-emp-data.service';
 import {
-  addToMyBookMarkedChallenges,
-  addToMyDownVotedChallenges,
-  addToMyUpVotedChallenges,
+  bookMarkChallenge,
+  downVoteChallenge,
+  upVoteChallenge,
 } from '@store/emp-auth';
 
 @Component({
@@ -42,7 +42,7 @@ export class ChallengeCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
-    private _modifyChallengeServc: ModifyChallengeService
+    private _modifyEmpDataServc: ModifyEmpDataService
   ) {}
 
   ngOnInit(): void {
@@ -63,42 +63,40 @@ export class ChallengeCardComponent implements OnInit, OnDestroy {
 
   upVoteChallenge() {
     if (!this.isUpVoted) {
-      this._modifyChallengeServc
-        .updateEmployeeUpvotes(this.empData.empId, [
-          ...this.empData.votedChallenges,
-          this.challengeId,
-        ])
+      this._modifyEmpDataServc
+        .updateEmployeeUpvotes(this.empData.empId, this.challengeId)
         .subscribe(() => {
           this.store.dispatch(
-            addToMyUpVotedChallenges({ id: this.challengeId })
+            upVoteChallenge({
+              challengeId: this.challengeId,
+              empId: this.empData.empId,
+            })
           );
         });
     }
   }
   bookmarkChallenge() {
     if (!this.isBookMarked) {
-      this._modifyChallengeServc
+      this._modifyEmpDataServc
         .updateEmployeeBookMarks(this.empData.empId, [
           ...this.empData.bookMarkedChallenges,
           this.challengeId,
         ])
         .subscribe(() => {
-          this.store.dispatch(
-            addToMyBookMarkedChallenges({ id: this.challengeId })
-          );
+          this.store.dispatch(bookMarkChallenge({ id: this.challengeId }));
         });
     }
   }
   downVoteChallenge() {
     if (!this.isDownVoted) {
-      this._modifyChallengeServc
-        .updateEmployeeDownUpvotes(this.empData.empId, [
-          ...this.empData.downVotedChllenges,
-          this.challengeId,
-        ])
+      this._modifyEmpDataServc
+        .updateEmployeeDownUpvotes(this.empData.empId, this.challengeId)
         .subscribe(() => {
           this.store.dispatch(
-            addToMyDownVotedChallenges({ id: this.challengeId })
+            downVoteChallenge({
+              challengeId: this.challengeId,
+              empId: this.empData.empId,
+            })
           );
         });
     }
